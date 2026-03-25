@@ -1,7 +1,6 @@
-## Getting Started
+## Lista String em Java - Programação Orientada a Objetos
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
-
+Lista de exercícios em java sobre string.
 ## Folder Structure
 
 The workspace contains two folders by default, where:
