@@ -201,5 +201,177 @@ public class exercicios {
 
     }
 
+     public static void ExercicioString6(){
+             Scanner sc = new Scanner(System.in);
+
+        System.out.println("Digite um parágrafo:");
+        String texto = sc.nextLine();
+
+        // Split
+        String[] palavras = texto.split("\\s+");
+
+        // Contar palavras
+        int totalPalavras = palavras.length;
+
+        // Palavra específica
+        System.out.println("Digite a palavra para buscar:");
+        String busca = sc.nextLine();
+
+        int contador = 0;
+
+        // Palavra mais longa
+        String maiorPalavra = "";
+
+        for (String p : palavras) {
+
+            // Contagem da palavra específica
+            if (p.equalsIgnoreCase(busca)) {
+                contador++;
+            }
+
+            // maior palavra
+            if (p.length() > maiorPalavra.length()) {
+                maiorPalavra = p;
+            }
+        }
+
+        // printar 
+        System.out.println("Total de palavras: " + totalPalavras);
+        System.out.println("Ocorrências de \"" + busca + "\": " + contador);
+        System.out.println("Maior palavra: " + maiorPalavra);
+                }
+
+        public static void ExercicioString7(){
+
+            String email;
+            boolean valido = true;
+
+            System.out.println("Digite seu email: ");
+            Scanner sc = new Scanner(System.in);
+            email = sc.nextLine();
+            if(email.contains(" ")){
+                System.out.println("Email inválido, não pode conter espaços");
+                valido = false;
+            }
+            
+            int primeiroArroba = email.indexOf("@");
+            int ultimoArroba = email.lastIndexOf("@");
+
+            if (primeiroArroba == -1 || primeiroArroba != ultimoArroba) {
+                valido = false;
+            }
+
+            if(email.startsWith("@") || email.endsWith("@")) {
+                System.out.println("Email inválido, '@' não pode estar no início ou no fim");
+                valido = false;
+            }
+
+            if(email.startsWith(".") || email.endsWith(".")) {
+                System.out.println("Email inválido, '.' não pode estar no início ou no fim");
+                valido = false;
+            }
+
+            if(primeiroArroba != -1) {
+                String depoisDoArroba = email.substring(primeiroArroba + 1);
+                if(!depoisDoArroba.contains(".")) {
+                    System.out.println("Email inválido, deve conter um '.' após o '@'");
+                    valido = false;
+                }
+            }
+
+            if(valido) {
+                System.out.println("Email válido");
+            } else {
+                System.out.println("Email inválido");
+            }
+
+        }
+
+        public static void ExercicioString8(){
+
+            String texto;
+
+            System.out.println("Digite um texto: ");
+            Scanner sc = new Scanner(System.in);
+            texto = sc.nextLine();
+
+            StringBuilder resultado = new StringBuilder();
+
+            int contador = 1;
+
+            for (int i = 0; i < texto.length(); i++) {
+                if (i < texto.length() - 1 && texto.charAt(i) == texto.charAt(i + 1)) {
+                contador++;
+                } else {
+
+                resultado.append(texto.charAt(i));
+                resultado.append(contador);
+                contador = 1;
+                }
+                
+            }
+
+            System.out.println("Compactado: " + resultado);
+
+        }
+
+        public static void ExercicioString9(){
+
+           Scanner sc = new Scanner(System.in);
+
+        System.out.println("Digite o nome completo:");
+        String nome = sc.nextLine();
+
+        nome = nome.trim();
+
+        String[] partes = nome.split("\\s+");
+
+        for (int i = 0; i < partes.length; i++) {
+            partes[i] = partes[i].substring(0, 1).toUpperCase() +
+                        partes[i].substring(1).toLowerCase();
+        }
+
+        String sobrenome = partes[partes.length - 1];
+        StringBuilder resultado = new StringBuilder();
+
+        resultado.append(sobrenome).append(", ");
+
+        resultado.append(partes[0]);
+
+        for (int i = 1; i < partes.length - 1; i++) {
+            resultado.append(" ");
+            
+            String p = partes[i].toLowerCase();
+            if (p.equals("da") || p.equals("de") || p.equals("do") || 
+                p.equals("das") || p.equals("dos")) {
+                resultado.append(p);
+            } else {
+                resultado.append(partes[i]);
+            }
+        }
+
+        System.out.println("Formatado: " + resultado);
+        
+
+        }
+    public static void main(String[] args) throws Exception {
+        
+        ExercicioString1();
+        ExercicioString2();
+        ExercicioString3();
+        ExercicioString4();
+        ExercicioString5();
+        ExercicioString6();
+        ExercicioString7();
+        ExercicioString8();
+        ExercicioString9();
+
+
+            
+
+    }
 }
+
+
+
 
